@@ -43,7 +43,7 @@ Congratulations! You're now all set up to use the program 🥳.
 
 ## Usage
 
-- to run the program, simply type ```python main.py``` in terminal.
+- To run the program, simply type ```python main.py``` in terminal.
 - A file will then be created with the first&last name, country and a small description of the leaders. 
 
 
