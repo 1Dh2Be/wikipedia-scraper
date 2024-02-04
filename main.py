@@ -36,8 +36,8 @@ if __name__ == "__main__":
             first_paragraph = scraper.get_first_paragraph(url)
 
             # Update the leaders_data dictionary with the first paragraph
-            scraper.all_data[leader_name] = first_paragraph
+            scraper.all_data[leader_name] = {'country': country_name, 'first_paragraph': first_paragraph}
             
 
     # Save the leaders data to a JSON file
-    scraper.to_json_file('test.json')
+    scraper.to_json_file('leaders_data.json')

@@ -3,7 +3,58 @@ from bs4 import BeautifulSoup as bs
 import re
 import json 
 
-class WikipediaScraper:
+class WikipediaScraper():
+    """
+    ----
+
+    A class used to scrape data from Wikipedia.
+
+
+    Attributes
+    ----------
+    * base_url : str
+        The base URL for the API. This is the main entry point for all API requests.
+    * country_endpoint : str
+        The endpoint for retrieving country data from the API.
+    * leaders_endpoint : str
+        The endpoint for retrieving leaders data from the API.
+    * cookies_endpoint : str
+        The endpoint for retrieving a new session cookie from the API.
+    * leaders_data : dict
+        A dictionary to store the leaders data retrieved from the API 
+        (Default is an empty dictionary).
+    * cookie : str
+        The session cookie used for authentication during API requests.
+        (Default is `None`).
+    * countries : dict
+        A dictionary to store the country data retrieved from the API.
+        (Default is an empty dictionary).
+    * all_data : dict
+        A dictionary to store the First/Last name and first paragraph of a leader's page.
+        (Default is an empty dictionary).
+
+    Methods
+    ----------
+    /// See documentation for methods using .__doc__ after method name. ///
+
+    * refresh_cookie()
+    
+    * get_countries()
+
+    * get_leaders()
+
+    * test_urls()
+
+    * get_key_from_value() -> Static method!
+
+    * get_first_paragraph()
+
+    * clean_paragraph()
+
+    * to_json_file()
+
+    ----
+    """
     def __init__(self, base_url:str, country_endpoint:str, leaders_endpoint:str,
                 cookies_endpoint:str, leaders_data:dict=None, cookie=None):
         
@@ -13,7 +64,6 @@ class WikipediaScraper:
         self.leaders_endpoint = leaders_endpoint
         self.cookies_endpoint = cookies_endpoint
         self.leaders_data = {}
-        self.paragraph_counter = 0
         self.countries = {}
         self.all_data = {}
 
@@ -134,6 +184,8 @@ class WikipediaScraper:
     def get_key_from_value(dictionary, value):
         """
         Returns the key corresponding to a given value in a specific dictionary.
+        /// It's a static method which means it doesn't need an instance off the class to function.
+        It was used to verify if a dictionary had the right key, value pairs. ///
         """
         for key, val in dictionary.items():
             if val == value:
